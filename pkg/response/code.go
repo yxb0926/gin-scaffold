@@ -5,7 +5,7 @@ var (
 	ErrNotFoundCode       = 404
 	ErrInternalServerCode = 500
 
-	ErrAddDateCode       = 2400
-	ErrInvalidParentCode = 2401
-	ErrSvcCode           = 2402
+	ErrAddDateCode = 2400
+	ErrArgsCode    = 2401
+	ErrSvcCode     = 2402
 )

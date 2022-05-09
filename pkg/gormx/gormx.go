@@ -12,13 +12,13 @@ import (
 )
 
 type Config struct {
-	Debug        bool
-	DBType       string
-	DSN          string
-	MaxLifeTime  int
-	MaxOpenConns int
-	MaxIdleConns int
-	TablePrefix  string
+	Debug       bool
+	DBType      string
+	DSN         string
+	MaxLifeTime int
+	MaxOpenCons int
+	MaxIdleCons int
+	TablePrefix string
 }
 
 func New(c *Config) (*gorm.DB, error) {
@@ -56,8 +56,8 @@ func New(c *Config) (*gorm.DB, error) {
 	}
 
 	sqlDB.SetConnMaxLifetime(time.Duration(c.MaxLifeTime) * time.Second)
-	sqlDB.SetMaxIdleConns(c.MaxIdleConns)
-	sqlDB.SetMaxOpenConns(c.MaxOpenConns)
+	sqlDB.SetMaxIdleConns(c.MaxIdleCons)
+	sqlDB.SetMaxOpenConns(c.MaxOpenCons)
 
 	return db, nil
 }

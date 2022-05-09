@@ -15,6 +15,7 @@ type IRouter interface {
 
 type Router struct {
 	UserApi *v1.UserApi
+	RoleApi *v1.RoleApi
 }
 
 func (a *Router) Register(app *gin.Engine) error {
@@ -40,6 +41,17 @@ func (a *Router) RegisterApi(app *gin.Engine) {
 			gUser.POST("", a.UserApi.Create)
 			gUser.DELETE(":id", a.UserApi.Delete)
 			gUser.PUT("", a.UserApi.Update)
+			gUser.POST("/:id/role/:rid", a.UserApi.AddRole)
+		}
+
+		gRole := v1.Group("role")
+		{
+			gRole.GET(":id", a.RoleApi.Get)
+			gRole.GET("", a.RoleApi.Query)
+			gRole.POST("", a.RoleApi.Create)
+			gRole.DELETE(":id", a.RoleApi.Delete)
+			gRole.PUT("", a.RoleApi.Update)
+			gRole.DELETE(":id/user/:uid", a.RoleApi.RemoveUser)
 		}
 	}
 }

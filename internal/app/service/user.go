@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/google/wire"
 	"yxb.com/gin-scaffold/v2/internal/app/dao"
+	"yxb.com/gin-scaffold/v2/internal/app/dao/dto"
 	"yxb.com/gin-scaffold/v2/internal/app/model"
 )
 
@@ -13,7 +14,7 @@ type UserSvc struct {
 	UserRepo *dao.UserRepo
 }
 
-func (a *UserSvc) Query(ctx context.Context, req *model.UserPagReq) (*model.UserPageRes, error) {
+func (a *UserSvc) Query(ctx context.Context, req *dto.UserPageReq) (*dto.UserPageRes, error) {
 	return a.UserRepo.Query(ctx, req)
 }
 
@@ -31,4 +32,9 @@ func (a *UserSvc) Update(ctx context.Context, user *model.User) error {
 
 func (a *UserSvc) Delete(ctx context.Context, id int) error {
 	return a.UserRepo.Delete(ctx, id)
+}
+
+func (a *UserSvc) AddRole(ctx context.Context, uid int, rid int) error {
+	role := &model.UserRole{UserId: uid, RoleId: rid}
+	return a.UserRepo.AddRole(ctx, role)
 }

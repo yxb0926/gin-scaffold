@@ -23,12 +23,12 @@ func InitGormDB() (*gorm.DB, error) {
 	}
 
 	return gormx.New(&gormx.Config{
-		DSN:          dsn,
-		DBType:       cfg.Gorm.DBType,
-		Debug:        cfg.Gorm.Debug,
-		MaxOpenConns: cfg.Gorm.MaxOpenConns,
-		MaxIdleConns: cfg.Gorm.MaxIdleConns,
-		MaxLifeTime:  cfg.Gorm.MaxLifetime,
-		TablePrefix:  cfg.Gorm.TablePrefix,
+		DSN:         dsn,
+		DBType:      cfg.Gorm.DBType,
+		Debug:       cfg.Gorm.Debug,
+		MaxOpenCons: cfg.Gorm.MaxOpenConns,
+		MaxIdleCons: cfg.Gorm.MaxIdleConns,
+		MaxLifeTime: cfg.Gorm.MaxLifetime,
+		TablePrefix: cfg.Gorm.TablePrefix,
 	})
 }

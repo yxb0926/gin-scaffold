@@ -4,4 +4,6 @@ import "github.com/google/wire"
 
 var ApiSet = wire.NewSet(
 	UserApiSet,
+	RoleApiSet,
+	MenuApiSet,
 )

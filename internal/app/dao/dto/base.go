@@ -1,4 +1,4 @@
-package model
+package dto
 
 type PageReq struct {
 	PageNum  int  `json:"pageNum"`
